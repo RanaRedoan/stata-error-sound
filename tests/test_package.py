@@ -91,5 +91,5 @@ def test_alias_help_file_points_to_command_help():
 
 def test_windows_helper_has_mp3_and_beep_fallback():
     helper = read_text("dosound_play_win.ps1")
-    assert "System.Windows.Media.MediaPlayer" in helper
+    assert "Start-Process" in helper
     assert "Console]::Beep" in helper or "[Console]::Beep" in helper

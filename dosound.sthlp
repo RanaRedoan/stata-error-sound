@@ -30,7 +30,8 @@ return code.
 
 {pstd}
 By default, {cmd:dosound} uses the bundled file {cmd:dosound_error.mp3}. Use {cmd:sound()} to point
-to another audio file for a specific run.
+to another audio file for a specific run. If {cmd:sound()} is provided, that selected audio file is
+used. If {cmd:sound()} is omitted, the bundled default sound is used.
 
 {marker options}{...}
 {title:Options}
@@ -65,8 +66,8 @@ If your do-file path contains spaces, quote the path after {cmd:using}. For exam
 {cmd:dosound using "D:/My Project/run.do"}.
 
 {pstd}
-On Windows, if MP3 playback is unavailable, the bundled helper falls back to a short beep so that an
-error still produces an audible signal.
+On Windows, the bundled helper opens the selected audio file with the default associated player. If
+that cannot be started, it falls back to a short beep so that an error still produces an audible signal.
 
 {title:Author}
 
