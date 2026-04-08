@@ -41,8 +41,12 @@ to another audio file for a specific run.
 {title:Examples}
 
 {phang2}{cmd:. net install stata_error_sound, from("https://raw.githubusercontent.com/RanaRedoan/stata-error-sound/main") replace}{p_end}
+{phang2}{cmd:. help dosound}{p_end}
+{phang2}{cmd:. help stata_error_sound}{p_end}
 {phang2}{cmd:. dosound using my_analysis.do}{p_end}
+{phang2}{cmd:. dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do"}{p_end}
 {phang2}{cmd:. dosound using scripts/build_tables.do, sound("C:/sounds/error.mp3")}{p_end}
+{phang2}{cmd:. dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do", sound("C:/sounds/error.mp3")}{p_end}
 
 {title:Remarks}
 
@@ -54,6 +58,10 @@ and {cmd:cvlc}, then falls back to {cmd:xdg-open} if one of those players is not
 {pstd}
 If the sound file cannot be found or the OS cannot play it, {cmd:dosound} still returns the wrapped
 do-file's original return code.
+
+{pstd}
+If your do-file path contains spaces, quote the path after {cmd:using}. For example,
+{cmd:dosound using "D:/My Project/run.do"}.
 
 {title:Author}
 

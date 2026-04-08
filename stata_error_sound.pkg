@@ -8,11 +8,8 @@ d
 d Source: https://github.com/RanaRedoan/stata-error-sound
 f dosound.ado
 f dosound.sthlp
-F sounds/dosound_error.mp3
-G WIN64 scripts/dosound_play_win.ps1 dosound_play_win.ps1
-G MACARM64 scripts/dosound_play_mac.sh dosound_play_mac.sh
-G OSX.ARM64 scripts/dosound_play_mac.sh dosound_play_mac.sh
-G MACINTEL64 scripts/dosound_play_mac.sh dosound_play_mac.sh
-G OSX.X8664 scripts/dosound_play_mac.sh dosound_play_mac.sh
-G LINUX64 scripts/dosound_play_linux.sh dosound_play_linux.sh
-G LINUX64P scripts/dosound_play_linux.sh dosound_play_linux.sh
+f stata_error_sound.sthlp
+f dosound_error.mp3
+f dosound_play_win.ps1
+f dosound_play_mac.sh
+f dosound_play_linux.sh

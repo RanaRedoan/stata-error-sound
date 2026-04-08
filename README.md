@@ -10,12 +10,25 @@ In Stata, install directly from the repository's raw `main` branch:
 net install stata_error_sound, from("https://raw.githubusercontent.com/RanaRedoan/stata-error-sound/main") replace
 ```
 
+After installation, open the help with either:
+
+```stata
+help dosound
+help stata_error_sound
+```
+
 ## Usage
 
 Run a do-file and use the bundled sound:
 
 ```stata
 dosound using my_analysis.do
+```
+
+If the do-file path contains spaces, quote it:
+
+```stata
+dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do"
 ```
 
 Override the sound file for one run:
@@ -25,6 +38,12 @@ dosound using my_analysis.do, sound("C:/sounds/error.mp3")
 ```
 
 If the wrapped do-file finishes successfully, `dosound` stays silent. If it fails, `dosound` tries to play the bundled MP3 and then exits with the same return code that the do-file produced.
+
+The `sound()` option does not run by itself. It only changes which audio file is played if the wrapped do-file ends with an error. Use the full command form:
+
+```stata
+dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do", sound("C:/sounds/error.mp3")
+```
 
 ## Repository contents
 

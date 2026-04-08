@@ -15,6 +15,11 @@ def test_expected_files_exist():
         "stata_error_sound.pkg",
         "dosound.ado",
         "dosound.sthlp",
+        "stata_error_sound.sthlp",
+        "dosound_error.mp3",
+        "dosound_play_win.ps1",
+        "dosound_play_mac.sh",
+        "dosound_play_linux.sh",
         "sounds/dosound_error.mp3",
         "scripts/dosound_play_win.ps1",
         "scripts/dosound_play_mac.sh",
@@ -37,11 +42,11 @@ def test_pkg_lists_installation_files():
     assert "Distribution-Date: 20260408" in pkg
     assert "f dosound.ado" in pkg
     assert "f dosound.sthlp" in pkg
-    assert "F sounds/dosound_error.mp3" in pkg
-    assert "G WIN64 scripts/dosound_play_win.ps1 dosound_play_win.ps1" in pkg
-    assert "G MACARM64 scripts/dosound_play_mac.sh dosound_play_mac.sh" in pkg
-    assert "G MACINTEL64 scripts/dosound_play_mac.sh dosound_play_mac.sh" in pkg
-    assert "G LINUX64 scripts/dosound_play_linux.sh dosound_play_linux.sh" in pkg
+    assert "f stata_error_sound.sthlp" in pkg
+    assert "f dosound_error.mp3" in pkg
+    assert "f dosound_play_win.ps1" in pkg
+    assert "f dosound_play_mac.sh" in pkg
+    assert "f dosound_play_linux.sh" in pkg
 
 
 def test_ado_declares_public_interface_and_rc_flow():
@@ -69,5 +74,14 @@ def test_ado_contains_cross_platform_dispatch():
 def test_readme_documents_github_install_and_usage():
     readme = read_text("README.md")
     assert "net install stata_error_sound" in readme
+    assert "help dosound" in readme
+    assert "help stata_error_sound" in readme
     assert "dosound using my_analysis.do" in readme
+    assert 'dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do"' in readme
     assert "sound(" in readme
+
+
+def test_alias_help_file_points_to_command_help():
+    alias_help = read_text("stata_error_sound.sthlp")
+    assert "{help dosound}" in alias_help
+    assert "help stata_error_sound" in alias_help
