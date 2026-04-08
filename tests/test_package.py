@@ -78,6 +78,8 @@ def test_readme_documents_github_install_and_usage():
     assert "help stata_error_sound" in readme
     assert "dosound using my_analysis.do" in readme
     assert 'dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do"' in readme
+    assert "quote it" in readme
+    assert "any nonzero return code" in readme
     assert "sound(" in readme
 
 
@@ -85,3 +87,9 @@ def test_alias_help_file_points_to_command_help():
     alias_help = read_text("stata_error_sound.sthlp")
     assert "{help dosound}" in alias_help
     assert "help stata_error_sound" in alias_help
+
+
+def test_windows_helper_has_mp3_and_beep_fallback():
+    helper = read_text("dosound_play_win.ps1")
+    assert "System.Windows.Media.MediaPlayer" in helper
+    assert "Console]::Beep" in helper or "[Console]::Beep" in helper

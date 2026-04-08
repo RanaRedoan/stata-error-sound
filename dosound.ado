@@ -40,7 +40,7 @@ program define _dosound_play
         capture findfile dosound_play_win.ps1
         if (_rc) exit
         local helper `"`r(fn)'"'
-        local cmd `"powershell -NoProfile -ExecutionPolicy Bypass -File `"`helper'"' `"`soundfile'"'"'
+        local cmd `"powershell -STA -NoProfile -ExecutionPolicy Bypass -File `"`helper'"' `"`soundfile'"'"'
     }
     else if (`"`c(os)'"' == "MacOSX") {
         capture findfile dosound_play_mac.sh

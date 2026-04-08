@@ -24,8 +24,9 @@
 
 {pstd}
 {cmd:dosound} wraps {cmd:do}. It runs the requested do-file with normal output and error messages.
-If the do-file exits with a nonzero return code, {cmd:dosound} plays a short sound and then exits with
-the same return code.
+If the do-file exits with any nonzero return code, including ordinary Stata command errors and errors
+raised inside the wrapped do-file, {cmd:dosound} plays a short sound and then exits with the same
+return code.
 
 {pstd}
 By default, {cmd:dosound} uses the bundled file {cmd:dosound_error.mp3}. Use {cmd:sound()} to point
@@ -62,6 +63,10 @@ do-file's original return code.
 {pstd}
 If your do-file path contains spaces, quote the path after {cmd:using}. For example,
 {cmd:dosound using "D:/My Project/run.do"}.
+
+{pstd}
+On Windows, if MP3 playback is unavailable, the bundled helper falls back to a short beep so that an
+error still produces an audible signal.
 
 {title:Author}
 

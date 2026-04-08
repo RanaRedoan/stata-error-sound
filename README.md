@@ -1,6 +1,6 @@
 # stata-error-sound
 
-`stata-error-sound` is a small Stata package that runs a do-file and plays a short sound whenever the do-file exits with a nonzero return code.
+`stata-error-sound` is a small Stata package that runs a do-file and plays a short sound whenever the do-file exits with any nonzero return code. That includes ordinary Stata command errors, errors raised inside the wrapped do-file, and other failures that leave a nonzero `_rc`.
 
 ## Install
 
@@ -37,13 +37,15 @@ Override the sound file for one run:
 dosound using my_analysis.do, sound("C:/sounds/error.mp3")
 ```
 
-If the wrapped do-file finishes successfully, `dosound` stays silent. If it fails, `dosound` tries to play the bundled MP3 and then exits with the same return code that the do-file produced.
+If the wrapped do-file finishes successfully, `dosound` stays silent. If it fails with any nonzero return code, `dosound` tries to play the bundled MP3 and then exits with the same return code that the do-file produced.
 
 The `sound()` option does not run by itself. It only changes which audio file is played if the wrapped do-file ends with an error. Use the full command form:
 
 ```stata
 dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do", sound("C:/sounds/error.mp3")
 ```
+
+On Windows, if MP3 playback is blocked or unavailable, the helper falls back to a short beep so that an error still produces an audible signal.
 
 ## Repository contents
 
