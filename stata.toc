@@ -1,0 +1,6 @@
+v 3
+d Stata Error Sound
+d Play a short sound when a wrapped do-file exits with an error.
+d
+d Install from GitHub and run dosound using yourfile.do
+p stata_error_sound Play a sound when a do-file exits with a nonzero return code
