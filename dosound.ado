@@ -37,10 +37,7 @@ program define _dosound_play
     local cmd
 
     if (`"`c(os)'"' == "Windows") {
-        capture findfile dosound_play_win.ps1
-        if (_rc) exit
-        local helper `"`r(fn)'"'
-        local cmd `"powershell -STA -NoProfile -ExecutionPolicy Bypass -File `"`helper'"' `"`soundfile'"'"'
+        local cmd `"cmd /c start "" `"`soundfile'"'"'"'
     }
     else if (`"`c(os)'"' == "MacOSX") {
         capture findfile dosound_play_mac.sh

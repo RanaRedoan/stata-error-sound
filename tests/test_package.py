@@ -66,7 +66,7 @@ def test_ado_contains_cross_platform_dispatch():
     assert '"Windows"' in ado
     assert '"MacOSX"' in ado
     assert 'inlist(`"`c(os)' in ado
-    assert "dosound_play_win.ps1" in ado
+    assert 'cmd /c start ""' in ado
     assert "dosound_play_mac.sh" in ado
     assert "dosound_play_linux.sh" in ado
 
@@ -93,3 +93,10 @@ def test_windows_helper_has_mp3_and_beep_fallback():
     helper = read_text("dosound_play_win.ps1")
     assert "Start-Process" in helper
     assert "Console]::Beep" in helper or "[Console]::Beep" in helper
+
+
+def test_ado_uses_selected_sound_or_default_sound():
+    ado = read_text("dosound.ado")
+    assert 'local resolved_sound `"`sound\'"\'' in ado
+    assert '_dosound_default_sound' in ado
+    assert 'capture confirm file `"`soundfile\'"\'' in ado

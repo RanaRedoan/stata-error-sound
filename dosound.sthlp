@@ -53,9 +53,10 @@ used. If {cmd:sound()} is omitted, the bundled default sound is used.
 {title:Remarks}
 
 {pstd}
-Windows playback is handled through a bundled PowerShell helper. macOS uses {cmd:afplay}. Linux uses
-the bundled shell helper, which tries common players such as {cmd:ffplay}, {cmd:mpg123}, {cmd:mpv},
-and {cmd:cvlc}, then falls back to {cmd:xdg-open} if one of those players is not available.
+Windows playback opens the selected audio file with the default associated player. macOS uses
+{cmd:afplay}. Linux uses the bundled shell helper, which tries common players such as {cmd:ffplay},
+{cmd:mpg123}, {cmd:mpv}, and {cmd:cvlc}, then falls back to {cmd:xdg-open} if one of those players
+is not available.
 
 {pstd}
 If the sound file cannot be found or the OS cannot play it, {cmd:dosound} still returns the wrapped
