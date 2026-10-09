@@ -45,12 +45,13 @@ The `sound()` option does not run by itself. It only changes which audio file is
 dosound using "D:/AI Agent Task/Stata Dos/dos/01_setup.do", sound("C:/sounds/error.mp3")
 ```
 
-On Windows, the helper opens the selected audio file with the default associated player. If that cannot be started, it falls back to a short beep so that an error still produces an audible signal.
+On Windows, the sound file is opened with the default associated audio player. On macOS and Linux, the bundled helper script plays it.
 
 ## Repository contents
 
 - `dosound.ado`: the Stata command
 - `dosound.sthlp`: Stata help page
 - `stata.toc` and `stata_error_sound.pkg`: GitHub `net install` metadata
-- `sounds/`: bundled default sound asset
-- `scripts/`: OS-specific playback helpers for Windows, macOS, and Linux
+- `stata_error_sound.sthlp`: short help page that points to `help dosound`
+- `dosound_error.mp3` and `dosound_play_*`: the default sound and the macOS/Linux playback helpers; `net install` copies these next to `dosound.ado`
+- `sounds/` and `scripts/`: the same sound and helpers, kept for browsing the repository

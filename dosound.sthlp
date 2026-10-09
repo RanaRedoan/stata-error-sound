@@ -67,8 +67,8 @@ If your do-file path contains spaces, quote the path after {cmd:using}. For exam
 {cmd:dosound using "D:/My Project/run.do"}.
 
 {pstd}
-On Windows, the bundled helper opens the selected audio file with the default associated player. If
-that cannot be started, it falls back to a short beep so that an error still produces an audible signal.
+On Windows, the sound file is opened with the default associated audio player. On macOS and Linux,
+the bundled helper script plays it.
 
 {title:Author}
 
